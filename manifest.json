@@ -1,0 +1,16 @@
+{
+  "name": "Football Info",
+  "short_name": "FI",
+  "description": "Update your information about football here.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#214252",
+  "theme_color": "#214252",
+  "icons": [
+      {
+          "src": "src/img/icon.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+  ]
+}

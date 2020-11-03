@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Football Info</title><link rel="icon" type="image/png" href="/src/img/icon.png"><link rel="apple-touch-icon" href="/src/img/icon.png"><link rel="manifest" href="/manifest.json"><link href="main.css" rel="stylesheet"></head><body class="primary-color"><header><nav-bar></nav-bar></header><main class="flex-container-col" id="body-content"></main><foot-bar></foot-bar><script>// REGISTER SERVICE WORKER
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(() => {
+              console.log("Pendaftaran ServiceWorker berhasil");
+            })
+            .catch(() => {
+              console.log("Pendaftaran ServiceWorker gagal");
+            });
+        });
+      } else {
+        console.log("ServiceWorker belum didukung browser ini.");
+      }
+
+      // Periksa fitur notification API
+      if ("Notification" in window) {
+        requestPermission();
+      } else {
+        console.log("Browser tidak mendukung notifikasi.");
+      }
+
+      // Meminta ijin menggunakan Notification API
+      function requestPermission () {
+        Notification.requestPermission().then(result => {
+          if (result === "denied") {
+            console.log("Fitur notifikasi tidak diijinkan.");
+            return;
+          } else if (result === "default") {
+            console.error("Pengguna menutup kotak dialog permintaan ijin.");
+            return;
+          }
+
+          console.log("Fitur notifikasi diijinkan.");
+        })
+      }
+
+      function showNotification () {
+        const title = "Football Info";
+        const options = {
+            "body": "Don't miss match Liverpool FC and Totenham hotspur now.",
+            "badge": "/src/img/icon.png"
+        };
+        if (Notification.permission === "granted") {
+            navigator.serviceWorker.ready.then(registration => {
+                registration.showNotification(title, options);
+            });
+        } else {
+            console.error('Fitur notifikasi tidak diijinkan.');
+        }
+      }</script><script src="bundle.js"></script></body></html>
