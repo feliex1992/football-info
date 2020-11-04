@@ -104,6 +104,19 @@ img, .brand-logo{
   margin: 0px;
 }
 
+.background-color {
+  top: 0px;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0px !important;
+  padding: 20px;
+}
+
+.user-view {
+  padding: 0px !important;
+}
+
 .text-logo {
   position: absolute;
   font-size: 2rem;

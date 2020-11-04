@@ -1,5 +1,6 @@
 {
   "name": "Football Info",
+  "gcm_sender_id": "87233150687",
   "short_name": "FI",
   "description": "Update your information about football here.",
   "start_url": "/index.html",
